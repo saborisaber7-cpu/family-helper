@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آب‌یار؛ یادآور نوبت آب روستا</title>
+    <title>چک‌یار؛ همراه و مراقب خانواده</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1e4620">
     <style>
@@ -11,60 +11,63 @@
             font-family: Tahoma, sans-serif;
             background-color: #f2f7f4;
             margin: 0;
-            padding: 15px;
+            padding: 10px;
             text-align: center;
             color: #2c3e50;
+            max-width: 480px;
+            margin: 0 auto;
         }
         .header {
             background-color: #1e4620;
             color: white;
             padding: 15px;
             border-radius: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             position: relative;
         }
         .settings-btn {
             position: absolute;
-            left: 15px;
-            top: 15px;
+            left: 10px;
+            top: 10px;
             background: rgba(255,255,255,0.2);
             border: none;
             color: white;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 13px;
         }
         .logo-img {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             background: white;
-            padding: 4px;
+            padding: 3px;
         }
-        h1 { margin: 5px 0; font-size: 22px; }
-        p { margin: 0; font-size: 14px; opacity: 0.9; }
+        h1 { margin: 4px 0; font-size: 20px; }
+        p { margin: 0; font-size: 13px; opacity: 0.9; }
         
         .date-box {
             background: white;
-            padding: 10px;
+            padding: 8px;
             border-radius: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-weight: bold;
+            font-size: 14px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 12px;
         }
         .card {
             background: white;
-            border-radius: 15px;
-            padding: 20px 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            padding: 15px 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
             cursor: pointer;
             border: 3px solid transparent;
             transition: 0.2s;
@@ -75,22 +78,22 @@
         .card-call { border-color: #c62828; }
         .card-out { border-color: #0277bd; }
         
-        .card .icon { font-size: 32px; margin-bottom: 8px; display: block; }
-        .card span { font-size: 16px; font-weight: bold; display: block; }
-        .card small { font-size: 12px; color: #666; }
+        .card .icon { font-size: 28px; margin-bottom: 6px; display: block; }
+        .card span { font-size: 15px; font-weight: bold; display: block; }
+        .card small { font-size: 11px; color: #666; }
 
         .sos-btn {
             background-color: #d32f2f;
             color: white;
             border: none;
             width: 100%;
-            padding: 18px;
-            border-radius: 15px;
-            font-size: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 18px;
             font-weight: bold;
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.4);
             cursor: pointer;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .sos-btn:active { transform: scale(0.98); }
 
@@ -108,8 +111,8 @@
             background: white;
             padding: 20px;
             border-radius: 15px;
-            width: 90%;
-            max-width: 400px;
+            width: 85%;
+            max-width: 350px;
             text-align: right;
         }
         .modal-content input {
@@ -119,16 +122,18 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 6px;
+            font-size: 14px;
         }
         .modal-content button {
             background: #1e4620;
             color: white;
             border: none;
-            padding: 10px 15px;
+            padding: 10px;
             border-radius: 6px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -136,9 +141,9 @@
 
     <div class="header">
         <button class="settings-btn" onclick="openSettings()">⚙️ تنظیمات</button>
-        <img src="icon-192.png" alt="لوگو" class="logo-img">
-        <h1>آب‌یار خانواده</h1>
-        <p>آب‌یار؛ یادآور نوبت آب روستا</p>
+        <img src="icon-512.png" alt="لوگو" class="logo-img">
+        <h1>چک‌یار</h1>
+        <p>چک‌یار؛ همراه و مراقب خانواده شما</p>
     </div>
 
     <div class="date-box" id="current-date">
@@ -156,15 +161,15 @@
             <span>دارو</span>
             <small id="status-med">انجام نشده</small>
         </div>
-        <div class="card card-call" onclick="makeCall()">
-            <span class="icon">📞</span>
-            <span>تماس با خانواده</span>
-            <small>یک لمس</small>
-        </div>
         <div class="card card-out" onclick="triggerAction('اطلاع خروج')">
             <span class="icon">🚪</span>
             <span>اطلاع خروج</span>
             <small id="status-out">انجام نشده</small>
+        </div>
+        <div class="card card-call" onclick="makeCall()">
+            <span class="icon">📞</span>
+            <span>تماس با خانواده</span>
+            <small>یک لمس</small>
         </div>
     </div>
 
