@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>چک‌یار؛ همراه و مراقب خانواده شما</title>
+  <meta name="theme-color" content="#1e4620">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <style>
+    :root{
+      --bg:#eef4f1; --card:#fff; --green:#1e4620; --green2:#2e7d32; --text:#234;
+      --muted:#6b7280; --line:#d9e5dc; --shadow:0 10px 28px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Tahoma,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:12px}
+    .app{width:100%;max-width:430px;background:#fff;border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+    .hero{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:18px 16px 16px;position:relative;text-align:center}
+    .settings-btn{position:absolute;left:12px;top:12px;border:0;border-radius:11px;background:rgba(255,255,255,.2);color:#fff;padding:7px 10px;font-weight:700;cursor:pointer}
+    .logo{width:74px;height:74px;border-radius:50%;background:#fff;padding:4px;object-fit:contain;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+    h1{margin:10px 0 2px;font-size:24px;font-weight:900}
+    .subtitle{margin:0;font-size:13px;opacity:.95}
+    .content{padding:14px}
+    .date{background:#f4fbf6;border:1px solid #cde7d1;color:var(--green);padding:10px 12px;border-radius:14px;margin-bottom:12px;font-weight:800;font-size:13px}
+    .contact-strip{background:#f8fafb;border:1px solid #e5e7eb;border-radius:14px;padding:10px 12px;margin-bottom:12px;text-align:right}
+    .contact-strip .label{font-size:12px;color:var(--muted);margin-bottom:4px}
+    .contact-strip .value{font-size:14px;font-weight:800;color:#1f2937}
+    .contact-strip .small{font-size:12px;color:var(--muted);margin-top:4px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+    .card{background:var(--card);border-radius:16px;padding:16px 10px;box-shadow:0 3px 12px rgba(0,0,0,.04);cursor:pointer;border:2px solid #e5e7eb;transition:.15s;user-select:none;text-align:center}
+    .card:active{transform:scale(.97)}
+    .card .icon{font-size:34px;display:block;margin-bottom:6px}
+    .card span{display:block;font-size:15px;font-weight:800}
+    .card small{display:block;margin-top:4px;font-size:11px;color:var(--muted)}
+    .done{border-color:#9ad59f;background:#f5fbf6}
+    .done small{color:var(--green2);font-weight:700}
+    .sos{width:100%;border:0;border-radius:16px;padding:16px;background:linear-gradient(135deg,#d32f2f,#b71c1c);color:#fff;font-size:18px;font-weight:900;box-shadow:0 8px 20px rgba(211,47,47,.28);cursor:pointer}
+    .sos:active{transform:scale(.98)}
+    .mini-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+    .secondary-btn{border:1px solid #d7dde3;background:#fff;border-radius:14px;padding:12px 10px;font-weight:800;cursor:pointer;color:#334155}
+    .secondary-btn.primary{background:#1e4620;color:#fff;border-color:#1e4620}
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;align-items:center;justify-content:center;padding:14px}
+    .modal-content{width:100%;max-width:380px;background:#fff;border-radius:18px;padding:18px;box-shadow:0 12px 32px rgba(0,0,0,.25);max-height:90vh;overflow:auto;text-align:right}
+    .modal-content h3{margin:0 0 12px;color:var(--green);font-size:18px}
+    .hint{font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.8}
+    .contact-row{border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;background:#fbfcfd}
+    .contact-row-head{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px}
+    .contact-row-head strong{font-size:14px}
+    .primary-badge{font-size:11px;background:#e8f5e9;color:#1b5e20;padding:4px 8px;border-radius:999px;font-weight:800}
+    .field{margin-bottom:8px}
+    label{display:block;font-size:12px;font-weight:800;color:#374151;margin-bottom:4px}
+    input,select{width:100%;padding:10px 12px;border:1.5px solid #d0d7de;border-radius:10px;font-size:14px;background:#fafbfc;direction:ltr;text-align:left}
+    input[dir="rtl"]{direction:rtl;text-align:right}
+    .row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .save-btn,.close-btn,.text-btn{border:0;border-radius:12px;padding:11px 12px;font-weight:900;cursor:pointer}
+    .save-btn{background:#1e4620;color:#fff;flex:1}
+    .close-btn{background:#e5e7eb;color:#111827;flex:1}
+    .text-btn{background:#eef4f1;color:#1e4620;border:1px solid #cfe2d2}
+    .status-list{margin-top:12px;border-top:1px solid #eef2f7;padding-top:12px}
+    .status-item{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dashed #eef2f7;font-size:13px}
+    .status-item:last-child{border-bottom:0}
+    .status-item span{color:#6b7280}
+    .status-item strong{font-weight:900}
+    .footer-note{font-size:12px;color:#6b7280;line-height:1.8;margin-top:10px;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="hero">
+      <button class="settings-btn" onclick="openSettings()">⚙️ تنظیمات</button>
+      <img src="icon-512.png" alt="لوگوی چک‌یار" class="logo" onerror="this.src='icon-192.png'">
+      <h1>چک‌یار</h1>
+      <p class="subtitle">چک‌یار؛ همراه و مراقب خانواده شما</p>
+    </div>
+
+    <div class="content">
+      <div class="date" id="current-date">📅 امروز: در حال دریافت تاریخ...</div>
+
+      <div class="contact-strip">
+        <div class="label">مخاطب اصلی</div>
+        <div class="value" id="active-contact-name">در حال بارگذاری...</div>
+        <div class="small" id="active-contact-phone"></div>
+      </div>
+
+      <div class="grid">
+        <div class="card" id="card-shop" onclick="triggerAction('خرید / قبض')">
+          <span class="icon">🛒</span><span>خرید / قبض</span><small id="status-shop">انجام نشده</small>
+        </div>
+        <div class="card" id="card-med" onclick="triggerAction('دارو')">
+          <span class="icon">💊</span><span>مصرف دارو</span><small id="status-med">انجام نشده</small>
+        </div>
+        <div class="card" id="card-out" onclick="triggerAction('اطلاع خروج')">
+          <span class="icon">🚪</span><span>اطلاع خروج</span><small id="status-out">انجام نشده</small>
+        </div>
+        <div class="card" id="card-call" onclick="openContactChooser('call')">
+          <span class="icon">📞</span><span>تماس سریع</span><small id="contact-display">انتخاب مخاطب</small>
+        </div>
+      </div>
+
+      <button class="sos" onclick="triggerSOS()">🚨 کمک اضطراری (SOS)</button>
+
+      <div class="mini-actions">
+        <button class="secondary-btn primary" onclick="openContactChooser('notify')">ارسال پیام به مراقبان</button>
+        <button class="secondary-btn" onclick="openSettings()">ویرایش چند مخاطب</button>
+      </div>
+
+      <div class="footer-note">برای مدیریت چند مراقب، شماره‌ها را از تنظیمات ثبت کنید و مخاطب اصلی را انتخاب کنید.</div>
+    </div>
+  </div>
+
+  <div class="modal" id="settingsModal">
+    <div class="modal-content">
+      <h3>⚙️ تنظیمات چند مخاطب</h3>
+      <div class="hint">سه مخاطب قابل ثبت هستند. هرکدام را می‌توانید فعال کنید و مخاطب اصلی را تعیین کنید. پیام‌های وضعیت به مخاطب اصلی ارسال می‌شود و تماس اضطراری نیز از لیست انتخاب می‌شود.</div>
+      <div id="contactsEditor"></div>
+      <div class="row-actions">
+        <button class="save-btn" onclick="saveSettings()">💾 ذخیره تنظیمات</button>
+        <button class="close-btn" onclick="closeSettings()">انصراف</button>
+      </div>
+      <div class="status-list">
+        <div class="status-item"><span>آخرین وضعیت خرید</span><strong id="status-label-shop">انجام نشده</strong></div>
+        <div class="status-item"><span>آخرین وضعیت دارو</span><strong id="status-label-med">انجام نشده</strong></div>
+        <div class="status-item"><span>آخرین وضعیت خروج</span><strong id="status-label-out">انجام نشده</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="chooserModal">
+    <div class="modal-content">
+      <h3 id="chooserTitle">انتخاب مخاطب</h3>
+      <div class="hint" id="chooserHint">یکی از مراقبان ثبت‌شده را انتخاب کنید.</div>
+      <div id="chooserList"></div>
+      <div class="row-actions">
+        <button class="close-btn" onclick="closeChooser()">بستن</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+const STORAGE_KEY = 'chekyar_caregivers';
+const STATUS_KEYS = { shop:'خرید / قبض', med:'دارو', out:'اطلاع خروج' };
+const DEFAULT_CAREGIVERS = [
+  { name:'فرزند ۱', phone:'09120000000', role:'مراقب اصلی', primary:true, enabled:true },
+  { name:'فرزند ۲', phone:'', role:'مراقب', primary:false, enabled:false },
+  { name:'فرزند ۳', phone:'', role:'مراقب', primary:false, enabled:false }
+];
+
+function persianDate(){
+  const options = { weekday:'long', year:'numeric', month:'long', day:'numeric', calendar:'persian' };
+  try { return '📅 ' + new Date().toLocaleDateString('fa-IR', options); }
+  catch(e){ return '📅 امروز: فعال'; }
+}
+
+document.getElementById('current-date').innerText = persianDate();
+
+function normalizePhone(phone){
+  return (phone || '').replace(/[^0-9+]/g,'').trim();
+}
+
+function loadCaregivers(){
+  let data;
+  try { data = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch(e) { data = null; }
+  if (!Array.isArray(data) || !data.length) data = structuredClone(DEFAULT_CAREGIVERS);
+  data = data.slice(0,3).map((c,i)=>({
+    name: (c && c.name ? String(c.name) : DEFAULT_CAREGIVERS[i].name),
+    phone: normalizePhone(c && c.phone ? c.phone : DEFAULT_CAREGIVERS[i].phone),
+    role: (c && c.role ? String(c.role) : (i===0 ? 'مراقب اصلی' : 'مراقب')),
+    primary: !!(c && c.primary),
+    enabled: c && typeof c.enabled === 'boolean' ? c.enabled : !!(c && c.phone)
+  }));
+  if (!data.some(c => c.primary && c.enabled)) {
+    const firstEnabled = data.find(c => c.enabled) || data[0];
+    if (firstEnabled) firstEnabled.primary = true;
+  }
+  return data;
+}
+
+function saveCaregivers(list){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+
+function getActiveCaregiver(){
+  const list = loadCaregivers().filter(c=>c.enabled && c.phone);
+  return list.find(c=>c.primary) || list[0] || null;
+}
+
+function getEnabledCaregivers(){
+  return loadCaregivers().filter(c=>c.enabled && c.phone);
+}
+
+function setActiveUI(){
+  const active = getActiveCaregiver();
+  const nameEl = document.getElementById('active-contact-name');
+  const phoneEl = document.getElementById('active-contact-phone');
+  const displayEl = document.getElementById('contact-display');
+  if (active) {
+    nameEl.innerText = `${active.name} • ${active.role}`;
+    phoneEl.innerText = active.phone;
+    displayEl.innerText = `تماس با ${active.name}`;
+  } else {
+    nameEl.innerText = 'مخاطبی ثبت نشده است';
+    phoneEl.innerText = 'لطفاً از تنظیمات مخاطبان را وارد کنید';
+    displayEl.innerText = 'انتخاب مخاطب';
+  }
+}
+
+function renderStatuses(){
+  const map = [
+    ['shop', 'status-shop', 'status-label-shop', 'card-shop'],
+    ['med', 'status-med', 'status-label-med', 'card-med'],
+    ['out', 'status-out', 'status-label-out', 'card-out'],
+  ];
+  map.forEach(([k, smallId, labelId, cardId]) => {
+    const done = localStorage.getItem(STATUS_KEYS[k]) === 'انجام شد';
+    document.getElementById(smallId).innerText = done ? 'انجام شد ✅' : 'انجام نشده';
+    document.getElementById(labelId).innerText = done ? 'انجام شد ✅' : 'انجام نشده';
+    document.getElementById(cardId).classList.toggle('done', done);
+  });
+}
+
+function refreshAll(){ setActiveUI(); renderStatuses(); }
+
+function openSettings(){
+  const list = loadCaregivers();
+  const editor = document.getElementById('contactsEditor');
+  editor.innerHTML = list.map((c, idx) => `
+    <div class="contact-row">
+      <div class="contact-row-head">
+        <strong>مخاطب ${idx+1}</strong>
+        <span class="primary-badge">${c.primary ? 'مخاطب اصلی' : 'عادی'}</span>
+      </div>
+      <div class="field"><label>نام</label><input id="cg_name_${idx}" type="text" dir="rtl" style="text-align:right;" value="${escapeHtml(c.name)}" placeholder="مثلاً: مریم (دختر)"></div>
+      <div class="field"><label>شماره موبایل</label><input id="cg_phone_${idx}" type="tel" value="${escapeHtml(c.phone)}" placeholder="09120000000"></div>
+      <div class="field"><label>عنوان / نقش</label><input id="cg_role_${idx}" type="text" dir="rtl" style="text-align:right;" value="${escapeHtml(c.role)}" placeholder="مراقب اصلی / فرزند / همسر"></div>
+      <div class="field"><label><input id="cg_enabled_${idx}" type="checkbox" ${c.enabled ? 'checked' : ''} style="width:auto;vertical-align:middle;margin-left:8px;">فعال باشد</label></div>
+      <div class="field"><label><input name="primaryContact" id="cg_primary_${idx}" type="radio" ${c.primary ? 'checked' : ''} style="width:auto;vertical-align:middle;margin-left:8px;">مخاطب اصلی</label></div>
+    </div>
+  `).join('');
+  document.getElementById('settingsModal').style.display='flex';
+}
+
+function closeSettings(){ document.getElementById('settingsModal').style.display='none'; }
+
+function escapeHtml(s){
+  return String(s ?? '').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+}
+
+function saveSettings(){
+  const current = loadCaregivers();
+  const list = current.map((c, idx) => {
+    const name = document.getElementById(`cg_name_${idx}`).value.trim();
+    const phone = normalizePhone(document.getElementById(`cg_phone_${idx}`).value.trim());
+    const role = document.getElementById(`cg_role_${idx}`).value.trim();
+    const enabled = document.getElementById(`cg_enabled_${idx}`).checked;
+    const primary = document.getElementById(`cg_primary_${idx}`).checked;
+    return { name: name || `مخاطب ${idx+1}`, phone, role: role || (idx===0 ? 'مراقب اصلی' : 'مراقب'), primary, enabled };
+  });
+  const primaries = list.filter(c => c.primary && c.enabled && c.phone);
+  if (!primaries.length) {
+    alert('لطفاً حداقل یک مخاطب فعال را به‌عنوان مخاطب اصلی انتخاب کنید.');
+    return;
+  }
+  list.forEach(c => c.primary = false);
+  list.find(c => c.enabled && c.phone && document.getElementById(`cg_primary_${list.indexOf(c)}`).checked).primary = true;
+  saveCaregivers(list);
+  closeSettings();
+  refreshAll();
+  alert('✅ تنظیمات چند مخاطب با موفقیت ذخیره شد.');
+}
+
+function whatsappUrl(phone, text){
+  const digits = normalizePhone(phone).replace(/^\+/, '');
+  const cleaned = digits.replace(/^0+/, '');
+  const international = cleaned.startsWith('98') ? cleaned : '98' + cleaned;
+  return `https://wa.me/${international}?text=${encodeURIComponent(text)}`;
+}
+
+function sendUpdateToCaregiver(actionName, caregiver){
+  const message = `پیام از چک‌یار:\n\nمورد «${actionName}» توسط سالمند ثبت شد.\nمخاطب: ${caregiver.name} (${caregiver.role})`;
+  window.location.href = whatsappUrl(caregiver.phone, message);
+}
+
+function triggerAction(actionName){
+  const primary = getActiveCaregiver();
+  if (!primary) { alert('ابتدا حداقل یک مخاطب فعال را در تنظیمات ثبت کنید.'); return; }
+  if (confirm(`آیا می‌خواهید وضعیت «${actionName}» را برای ${primary.name} ارسال کنید؟`)) {
+    if (actionName === 'خرید / قبض') document.getElementById('status-shop').innerText = 'در حال ارسال...';
+    if (actionName === 'دارو') document.getElementById('status-med').innerText = 'در حال ارسال...';
+    if (actionName === 'اطلاع خروج') document.getElementById('status-out').innerText = 'در حال ارسال...';
+    localStorage.setItem(actionName, 'انجام شد');
+    localStorage.setItem(STATUS_KEYS[actionName === 'خرید / قبض' ? 'shop' : actionName === 'دارو' ? 'med' : 'out'], 'انجام شد');
+    renderStatuses();
+    sendUpdateToCaregiver(actionName, primary);
+  }
+}
+
+function openContactChooser(mode){
+  const list = getEnabledCaregivers();
+  const modal = document.getElementById('chooserModal');
+  const title = document.getElementById('chooserTitle');
+  const hint = document.getElementById('chooserHint');
+  const holder = document.getElementById('chooserList');
+  if (!list.length) { alert('ابتدا مخاطبان را در تنظیمات ثبت کنید.'); return; }
+  title.innerText = mode === 'call' ? 'انتخاب مخاطب برای تماس' : 'انتخاب مخاطب برای ارسال پیام';
+  hint.innerText = mode === 'call' ? 'یکی از مراقبان فعال را برای تماس انتخاب کنید.' : 'یکی از مراقبان فعال را برای دریافت پیام انتخاب کنید.';
+  holder.innerHTML = list.map((c, idx) => `
+    <button class="secondary-btn ${c.primary ? 'primary' : ''}" style="width:100%;margin-bottom:8px;text-align:right" onclick="chooseCaregiver(${idx}, '${mode}')">
+      ${c.primary ? '★ ' : ''}${escapeHtml(c.name)} — ${escapeHtml(c.role)}<br><span style="font-size:12px;opacity:.85">${escapeHtml(c.phone)}</span>
+    </button>
+  `).join('');
+  modal.style.display='flex';
+}
+
+function closeChooser(){ document.getElementById('chooserModal').style.display='none'; }
+
+function chooseCaregiver(index, mode){
+  const list = getEnabledCaregivers();
+  const cg = list[index];
+  if (!cg) return;
+  if (mode === 'call') {
+    window.location.href = `tel:${cg.phone}`;
+  } else {
+    const text = `پیام از چک‌یار:\n\n${cg.name} عزیز، لطفاً وضعیت خانواده را بررسی کنید.`;
+    window.location.href = whatsappUrl(cg.phone, text);
+  }
+}
+
+function triggerSOS(){
+  const list = getEnabledCaregivers();
+  if (!list.length) { alert('برای SOS ابتدا حداقل یک مخاطب فعال ثبت کنید.'); return; }
+  const primary = getActiveCaregiver() || list[0];
+  if (confirm(`⚠️ تماس اضطراری برای ${primary.name} برقرار شود؟`)) {
+    window.location.href = `tel:${primary.phone}`;
+  }
+}
+
+// Allow clicking an action to open chooser from current active caregivers when necessary.
+function makeCall(){ openContactChooser('call'); }
+
+window.addEventListener('click', (e) => {
+  if (e.target.classList.contains('modal')) {
+    e.target.style.display = 'none';
+  }
+});
+
+// Init states
+refreshAll();
+
+// Service worker registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(err => console.log('SW registration failed:', err));
+  });
+}
+</script>
+</body>
+</html>
