@@ -10,11 +10,11 @@
         :root {
             --bg-color: #f0f4f3;
             --text-main: #1a1a1a;
-            --color-meds: #0b63c5;     /* آبی با کنتراست بالا */
-            --color-bills: #d35400;    /* نارنجی تیره */
-            --color-exit: #1e7e34;     /* سبز تیره */
-            --color-call: #6c3483;     /* بنفش تیره */
-            --color-sos: #b03a2e;      /* قرمز تیره */
+            --color-meds: #0b63c5;
+            --color-bills: #d35400;
+            --color-exit: #1e7e34;
+            --color-call: #6c3483;
+            --color-sos: #b03a2e;
             --radius-btn: 14px;
         }
 
@@ -28,12 +28,11 @@
             font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
             background-color: var(--bg-color);
             margin: 0;
-            padding: 16px 14px 90px 14px; /* فضای کافی برای SOS پایین صفحه */
+            padding: 16px 14px 90px 14px;
             color: var(--text-main);
             direction: rtl;
         }
 
-        /* سربرگ */
         .header {
             text-align: center;
             margin-bottom: 18px;
@@ -52,14 +51,14 @@
         }
 
         .header .subtitle {
-            font-size: 19px;
+            font-size: 18px;
             margin: 6px 0 2px 0;
             color: #333;
             font-weight: 600;
         }
 
         .header .date {
-            font-size: 16px;
+            font-size: 15px;
             color: #666;
             margin: 0;
         }
@@ -75,9 +74,9 @@
             font-size: 14px;
             cursor: pointer;
             color: #1e4620;
+            font-weight: bold;
         }
 
-        /* دکمه‌های اصلی عمودی با ارتفاع و کنتراست استاندارد */
         .main-btn {
             display: flex;
             align-items: center;
@@ -91,12 +90,11 @@
             text-align: right;
             box-shadow: 0 4px 10px rgba(0,0,0,0.12);
             cursor: pointer;
-            transition: transform 0.08s ease, filter 0.15s ease;
+            transition: transform 0.08s ease;
         }
 
         .main-btn:active {
             transform: scale(0.98);
-            filter: brightness(0.92);
         }
 
         .btn-icon {
@@ -112,25 +110,22 @@
         }
 
         .btn-title {
-            font-size: 23px;
+            font-size: 22px;
             font-weight: 800;
             line-height: 1.3;
         }
 
         .btn-status {
-            font-size: 16px;
+            font-size: 15px;
             opacity: 0.95;
             margin-top: 4px;
-            font-weight: 500;
         }
 
-        /* رنگ‌بندی تفکیک‌شده */
         .btn-meds { background-color: var(--color-meds); }
         .btn-bills { background-color: var(--color-bills); }
         .btn-exit { background-color: var(--color-exit); }
         .btn-call { background-color: var(--color-call); }
 
-        /* دکمه اضطراری ثابت در پایین صفحه */
         .sos-container {
             position: fixed;
             bottom: 0;
@@ -155,22 +150,16 @@
             cursor: pointer;
         }
 
-        .btn-sos .btn-icon {
-            font-size: 34px;
-            margin-left: 10px;
-        }
+        .btn-sos .btn-icon { font-size: 34px; margin-left: 10px; }
+        .btn-sos .btn-title { font-size: 24px; font-weight: 900; }
 
-        .btn-sos .btn-title {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-        }
-
-        /* مودال‌ها و پاپ‌آپ‌ها */
         .modal {
             display: none;
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: rgba(0, 0, 0, 0.75);
             z-index: 1000;
             padding: 16px;
@@ -182,7 +171,7 @@
             border-radius: 18px;
             padding: 20px 16px;
             max-width: 480px;
-            margin: 30px auto;
+            margin: 20px auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
@@ -236,37 +225,19 @@
             margin-top: 8px;
         }
 
-        .btn-confirm-action {
-            background-color: #1e7e34;
-            color: #fff;
-        }
-
-        .btn-secondary-action {
-            background-color: #d35400;
-            color: #fff;
-        }
-
-        .btn-call-action {
-            background-color: var(--color-call);
-            color: #fff;
-            margin-bottom: 12px;
-        }
-
-        .btn-close-modal {
-            background-color: #7f8c8d;
-            color: #fff;
-            margin-top: 14px;
-        }
+        .btn-confirm-action { background-color: #1e7e34; color: #fff; }
+        .btn-secondary-action { background-color: #d35400; color: #fff; }
+        .btn-call-action { background-color: var(--color-call); color: #fff; margin-bottom: 12px; }
+        .btn-close-modal { background-color: #7f8c8d; color: #fff; margin-top: 14px; }
 
         .timestamp-badge {
-            display: inline-block;
+            display: block;
             margin-top: 8px;
             font-size: 15px;
             font-weight: 700;
             color: #1e7e34;
         }
 
-        /* دکمه شمارش معکوس SOS */
         .sos-circle {
             width: 170px;
             height: 170px;
@@ -286,18 +257,60 @@
             touch-action: none;
         }
 
-        .sos-number {
-            font-size: 46px;
-            line-height: 1;
-            margin-top: 4px;
+        .sos-number { font-size: 46px; line-height: 1; margin-top: 4px; }
+
+        .settings-section-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #1e4620;
+            margin: 18px 0 8px 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 4px;
+        }
+
+        .setting-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px;
+            align-items: center;
+        }
+
+        .setting-input {
+            padding: 8px;
+            font-size: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            flex: 1;
+        }
+
+        .btn-del {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn-add-item {
+            background: #2980b9;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 14px;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <!-- هدر برنامه -->
     <header class="header">
-        <button class="settings-icon-btn" onclick="openModal('settingsModal')">⚙️ تنظیمات</button>
+        <button class="settings-icon-btn" onclick="openSettingsModal()">⚙️ ویرایش و تنظیمات</button>
         <h1>چک‌یار خانواده</h1>
         <div class="subtitle">سلام، روزتون بخیر 🌸</div>
         <div class="date" id="jalali-date">امروز</div>
@@ -339,7 +352,7 @@
         </div>
     </button>
 
-    <!-- ۵. دکمه کمک اضطراری (ثابت پایین) -->
+    <!-- ۵. دکمه کمک اضطراری ثابت -->
     <div class="sos-container">
         <button class="btn-sos" onclick="openModal('sosModal')">
             <span class="btn-icon">🆘</span>
@@ -347,25 +360,11 @@
         </button>
     </div>
 
-    <!-- مودال دارو -->
+    <!-- مودال داروها -->
     <div id="medsModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">💊 داروهای امروز</div>
-            
-            <div class="card-item" id="med-card-1">
-                <div class="card-title">قرص فشار خون</div>
-                <div class="card-desc">ساعت ۸:۰۰ صبح</div>
-                <button class="action-btn btn-confirm-action" id="med-btn-1" onclick="confirmMed(1, 'قرص فشار خون')">دارو را خوردم ✅</button>
-                <div class="timestamp-badge" id="med-time-1"></div>
-            </div>
-
-            <div class="card-item" id="med-card-2">
-                <div class="card-title">قرص قند</div>
-                <div class="card-desc">ساعت ۱۲:۰۰ ظهر</div>
-                <button class="action-btn btn-confirm-action" id="med-btn-2" onclick="confirmMed(2, 'قرص قند')">دارو را خوردم ✅</button>
-                <div class="timestamp-badge" id="med-time-2"></div>
-            </div>
-
+            <div id="meds-list-container"></div>
             <button class="action-btn btn-close-modal" onclick="closeModal('medsModal')">بازگشت ↩</button>
         </div>
     </div>
@@ -374,17 +373,12 @@
     <div id="billsModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">🛒 خرید و پرداخت قبض</div>
+            <div id="buys-list-container"></div>
             
-            <div class="card-item" id="buy-card-1">
-                <div class="card-title">نان و شیر تازه</div>
-                <button class="action-btn btn-confirm-action" id="buy-btn-1" onclick="confirmBuy(1, 'خرید نان و شیر')">خرید انجام شد ✅</button>
-                <div class="timestamp-badge" id="buy-time-1"></div>
-            </div>
-
             <div class="card-item">
                 <div class="card-title">قبض برق و گاز</div>
-                <div class="card-desc">پرداخت بدون نیاز به اطلاعات بانکی</div>
-                <button class="action-btn btn-secondary-action" onclick="requestBillHelp()">از فرزندم بخواهید پرداخت کند 📲</button>
+                <div class="card-desc">درخواست پرداخت فوری از فرزند</div>
+                <button class="action-btn btn-secondary-action" onclick="requestBillHelp()">ارسال پیامک درخواست پرداخت 📲</button>
             </div>
 
             <button class="action-btn btn-close-modal" onclick="closeModal('billsModal')">بازگشت ↩</button>
@@ -400,12 +394,12 @@
         </div>
     </div>
 
-    <!-- مودال کمک فوری SOS -->
+    <!-- مودال SOS -->
     <div id="sosModal" class="modal">
         <div class="modal-content" style="text-align: center;">
             <div class="modal-header" style="color: var(--color-sos);">🆘 درخواست کمک اضطراری</div>
             <p style="font-size: 18px; line-height: 1.5; color: #444;">
-                برای تماس اضطراری با مراقب اصلی، دکمه زیر را <strong>۳ ثانیه نگه دارید</strong>:
+                برای تماس با مراقب اصلی دکمه را <strong>۳ ثانیه نگه دارید</strong>:
             </p>
             <div class="sos-circle" id="sos-interactive-btn"
                  onmousedown="startSOSHold()" onmouseup="abortSOSHold()" onmouseleave="abortSOSHold()"
@@ -417,135 +411,268 @@
         </div>
     </div>
 
-    <!-- مودال تنظیمات مخاطبان -->
+    <!-- مودال تنظیمات -->
     <div id="settingsModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">⚙️ تنظیمات مراقبان و فرزندان</div>
-            <p style="font-size: 14px; color:#666;">شماره‌های تماس اعضای خانواده جهت تماس مستقیم و SOS:</p>
-            
-            <div style="margin-bottom: 12px;">
-                <label style="font-size: 14px; font-weight: bold;">فرزند اول (مراقب اصلی / SOS):</label>
-                <input type="tel" id="cfg-phone-1" style="width:100%; padding:10px; font-size:16px; border-radius:8px; border:1px solid #ccc; margin-top:4px;" value="09120000000">
+            <div class="modal-header">⚙️ ویرایش اطلاعات و تنظیمات</div>
+
+            <!-- تنظیمات ارسال پیامک -->
+            <div class="settings-section-title">💬 روش اطلاع‌رسانی به مراقب:</div>
+            <div style="margin-bottom: 8px; background: #eef7f2; padding: 10px; border-radius: 8px; border: 1px solid #c2e0cd;">
+                <label style="font-size: 14px; font-weight: bold; display: block; margin-bottom: 6px;">
+                    <input type="checkbox" id="cfg-sms-notify" checked> ارسال پیامک تأیید خودکار کارهای روزمره
+                </label>
+                <small style="color: #555; display: block; line-height: 1.4;">با فعال بودن این گزینه، پس از انجام هر کار، صفحه پیامک گوشی سالمند برای ارسال گزارش آماده می‌شود.</small>
             </div>
 
-            <div style="margin-bottom: 12px;">
-                <label style="font-size: 14px; font-weight: bold;">فرزند دوم / همراه:</label>
-                <input type="tel" id="cfg-phone-2" style="width:100%; padding:10px; font-size:16px; border-radius:8px; border:1px solid #ccc; margin-top:4px;" value="09120000001">
+            <!-- ویرایش داروها -->
+            <div class="settings-section-title">💊 تنظیم داروها و ساعات مصرف:</div>
+            <div id="settings-meds-container"></div>
+            <button type="button" class="btn-add-item" onclick="addMedSettingRow()">+ افزودن داروی جدید</button>
+
+            <!-- ویرایش اقلام خرید -->
+            <div class="settings-section-title">🛒 تنظیم اقلام خرید روزانه:</div>
+            <div id="settings-buys-container"></div>
+            <button type="button" class="btn-add-item" onclick="addBuySettingRow()">+ افزودن قلم خرید جدید</button>
+
+            <!-- ویرایش شماره‌ها -->
+            <div class="settings-section-title">📞 شماره‌های تماس:</div>
+            <div style="margin-bottom: 8px;">
+                <label style="font-size: 13px; font-weight: bold;">مراقب اصلی / تماس SOS:</label>
+                <input type="tel" id="cfg-phone-1" class="setting-input" style="width:100%; text-align: left;" placeholder="مثال: 09123456789">
+            </div>
+            <div style="margin-bottom: 8px;">
+                <label style="font-size: 13px; font-weight: bold;">فرزند دوم / همراه:</label>
+                <input type="tel" id="cfg-phone-2" class="setting-input" style="width:100%; text-align: left;" placeholder="مثال: 09123456789">
             </div>
 
-            <button class="action-btn btn-confirm-action" onclick="saveSettings()">ذخیره تنظیمات ✅</button>
-            <button class="action-btn btn-close-modal" onclick="closeModal('settingsModal')">بستن</button>
+            <button class="action-btn btn-confirm-action" onclick="saveAllSettings()">ذخیره همه تغییرات ✅</button>
+            <button class="action-btn btn-close-modal" onclick="closeModal('settingsModal')">انصراف</button>
         </div>
     </div>
 
     <script>
-        // ۱. مقداردهی اولیه مخاطبان
-        const DEFAULT_CAREGIVERS = [
-            { name: 'فرزند اول (مراقب اصلی)', phone: '09120000000', primary: true },
-            { name: 'فرزند دوم', phone: '09120000001', primary: false }
+        // داده‌های پیش‌فرض
+        const DEFAULT_MEDS = [
+            { id: 1, name: 'قرص فشار خون', time: 'ساعت ۸:۰۰ صبح' },
+            { id: 2, name: 'قرص قند', time: 'ساعت ۱۲:۰۰ ظهر' }
         ];
 
-        function getCaregivers() {
-            const saved = localStorage.getItem('chekyar_caregivers');
-            return saved ? JSON.parse(saved) : DEFAULT_CAREGIVERS;
+        const DEFAULT_BUYS = [
+            { id: 1, name: 'نان و شیر تازه' }
+        ];
+
+        const DEFAULT_CONTACTS = [
+            { name: 'فرزند اول (مراقب اصلی)', phone: '', primary: true },
+            { name: 'فرزند دوم', phone: '', primary: false }
+        ];
+
+        function getMeds() {
+            const saved = localStorage.getItem('chekyar_meds_list');
+            return saved ? JSON.parse(saved) : DEFAULT_MEDS;
         }
 
-        function renderContacts() {
-            const caregivers = getCaregivers();
-            const listContainer = document.getElementById('contacts-list');
-            listContainer.innerHTML = '';
-            
-            caregivers.forEach(c => {
-                const a = document.createElement('a');
-                a.href = `tel:${c.phone}`;
-                a.className = 'action-btn btn-call-action';
-                a.innerHTML = `تماس با ${c.name} 📞`;
-                listContainer.appendChild(a);
-            });
+        function getBuys() {
+            const saved = localStorage.getItem('chekyar_buys_list');
+            return saved ? JSON.parse(saved) : DEFAULT_BUYS;
+        }
 
-            if (document.getElementById('cfg-phone-1')) {
-                document.getElementById('cfg-phone-1').value = caregivers[0]?.phone || '';
-                document.getElementById('cfg-phone-2').value = caregivers[1]?.phone || '';
+        function getContacts() {
+            const saved = localStorage.getItem('chekyar_caregivers');
+            return saved ? JSON.parse(saved) : DEFAULT_CONTACTS;
+        }
+
+        function isSmsNotifyEnabled() {
+            const saved = localStorage.getItem('chekyar_sms_notify');
+            return saved === null ? true : saved === 'true';
+        }
+
+        // تابع باز کردن پیامک
+        function triggerSmsNotification(messageText) {
+            if (!isSmsNotifyEnabled()) return;
+            const contacts = getContacts();
+            const primaryCaregiver = contacts.find(c => c.primary) || contacts[0];
+            
+            if (primaryCaregiver && primaryCaregiver.phone) {
+                const encodedMsg = encodeURIComponent(messageText);
+                window.location.href = `sms:${primaryCaregiver.phone}?body=${encodedMsg}`;
             }
         }
 
-        function saveSettings() {
-            const p1 = document.getElementById('cfg-phone-1').value.trim();
-            const p2 = document.getElementById('cfg-phone-2').value.trim();
-            const data = [
-                { name: 'فرزند اول (مراقب اصلی)', phone: p1, primary: true },
-                { name: 'فرزند دوم', phone: p2, primary: false }
-            ];
-            localStorage.setItem('chekyar_caregivers', JSON.stringify(data));
-            renderContacts();
-            closeModal('settingsModal');
-            alert('اطلاعات تماس با موفقیت ذخیره شد.');
+        function renderMedsUI() {
+            const meds = getMeds();
+            const container = document.getElementById('meds-list-container');
+            container.innerHTML = '';
+
+            meds.forEach(med => {
+                const doneMsg = localStorage.getItem(`med_${med.id}_done`);
+                const card = document.createElement('div');
+                card.className = `card-item ${doneMsg ? 'completed' : ''}`;
+                card.id = `med-card-${med.id}`;
+                
+                card.innerHTML = `
+                    <div class="card-title">${med.name}</div>
+                    <div class="card-desc">${med.time}</div>
+                    ${!doneMsg ? `<button class="action-btn btn-confirm-action" onclick="confirmMed(${med.id}, '${med.name}')">دارو را خوردم ✅</button>` : ''}
+                    <div class="timestamp-badge" id="med-time-${med.id}">${doneMsg || ''}</div>
+                `;
+                container.appendChild(card);
+            });
         }
 
-        // ۲. نمایش تاریخ فارسی
-        try {
-            const today = new Date().toLocaleDateString('fa-IR', { weekday: 'long', day: 'numeric', month: 'long' });
-            document.getElementById('jalali-date').innerText = today;
-        } catch (e) {
-            document.getElementById('jalali-date').innerText = 'امروز';
+        function renderBuysUI() {
+            const buys = getBuys();
+            const container = document.getElementById('buys-list-container');
+            container.innerHTML = '';
+
+            buys.forEach(buy => {
+                const doneMsg = localStorage.getItem(`buy_${buy.id}_done`);
+                const card = document.createElement('div');
+                card.className = `card-item ${doneMsg ? 'completed' : ''}`;
+                card.id = `buy-card-${buy.id}`;
+
+                card.innerHTML = `
+                    <div class="card-title">${buy.name}</div>
+                    ${!doneMsg ? `<button class="action-btn btn-confirm-action" onclick="confirmBuy(${buy.id}, '${buy.name}')">خرید انجام شد ✅</button>` : ''}
+                    <div class="timestamp-badge" id="buy-time-${buy.id}">${doneMsg || ''}</div>
+                `;
+                container.appendChild(card);
+            });
         }
 
-        // ۳. مدیریت پنجره‌ها (Modals)
-        function openModal(id) {
-            document.getElementById(id).style.display = 'block';
+        function renderContactsUI() {
+            const contacts = getContacts();
+            const container = document.getElementById('contacts-list');
+            container.innerHTML = '';
+
+            contacts.forEach(c => {
+                if (c.phone) {
+                    const a = document.createElement('a');
+                    a.href = `tel:${c.phone}`;
+                    a.className = 'action-btn btn-call-action';
+                    a.innerHTML = `تماس با ${c.name} 📞`;
+                    container.appendChild(a);
+                }
+            });
+            if (container.innerHTML === '') {
+                container.innerHTML = '<p style="text-align:center;color:#666;">شماره تماسی تعریف نشده است. از بخش تنظیمات اضافه کنید.</p>';
+            }
         }
 
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-            abortSOSHold();
-        }
-
-        // ۴. ثبت دارو
         function confirmMed(id, name) {
             const now = new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
-            const msg = `امروز ساعت ${now} ثبت شد ✅`;
-            
-            document.getElementById(`med-card-${id}`).classList.add('completed');
-            document.getElementById(`med-btn-${id}`).style.display = 'none';
-            document.getElementById(`med-time-${id}`).innerText = msg;
-            
-            localStorage.setItem(`med_${id}_done`, msg);
-            updateDashboardSummaries();
+            const statusText = `امروز ساعت ${now} مصرف شد ✅`;
+            localStorage.setItem(`med_${id}_done`, statusText);
+            renderMedsUI();
+            triggerSmsNotification(`سلام، من داروی "${name}" را امروز ساعت ${now} مصرف کردم.`);
         }
 
-        // ۵. ثبت خرید
-        function confirmBuy(id, title) {
+        function confirmBuy(id, name) {
             const now = new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
-            const msg = `امروز ساعت ${now} انجام شد ✅`;
-
-            document.getElementById(`buy-card-${id}`).classList.add('completed');
-            document.getElementById(`buy-btn-${id}`).style.display = 'none';
-            document.getElementById(`buy-time-${id}`).innerText = msg;
-
-            localStorage.setItem(`buy_${id}_done`, msg);
-            updateDashboardSummaries();
+            const statusText = `امروز ساعت ${now} انجام شد ✅`;
+            localStorage.setItem(`buy_${id}_done`, statusText);
+            renderBuysUI();
+            triggerSmsNotification(`سلام، خرید "${name}" امروز در ساعت ${now} انجام شد.`);
         }
 
         function requestBillHelp() {
-            alert('درخواست پرداخت قبض برای فرزند ارسال شد 📲');
+            triggerSmsNotification(`سلام، لطفاً در پرداخت قبوض کمکم کنید.`);
         }
 
-        // ۶. وضعیت خروج و بازگشت
-        let isOut = localStorage.getItem('chekyar_is_out') === 'true';
+        function openSettingsModal() {
+            const meds = getMeds();
+            const buys = getBuys();
+            const contacts = getContacts();
 
-        function updateExitButtonUI() {
+            document.getElementById('cfg-sms-notify').checked = isSmsNotifyEnabled();
+
+            const medsBox = document.getElementById('settings-meds-container');
+            medsBox.innerHTML = '';
+            meds.forEach(m => addMedSettingRow(m.name, m.time));
+
+            const buysBox = document.getElementById('settings-buys-container');
+            buysBox.innerHTML = '';
+            buys.forEach(b => addBuySettingRow(b.name));
+
+            document.getElementById('cfg-phone-1').value = contacts[0]?.phone || '';
+            document.getElementById('cfg-phone-2').value = contacts[1]?.phone || '';
+
+            openModal('settingsModal');
+        }
+
+        function addMedSettingRow(name = '', time = '') {
+            const container = document.getElementById('settings-meds-container');
+            const row = document.createElement('div');
+            row.className = 'setting-row med-setting-item';
+            row.innerHTML = `
+                <input type="text" class="setting-input med-name" placeholder="نام دارو" value="${name}">
+                <input type="text" class="setting-input med-time" placeholder="ساعت مصرف" value="${time}">
+                <button type="button" class="btn-del" onclick="this.parentElement.remove()">✕</button>
+            `;
+            container.appendChild(row);
+        }
+
+        function addBuySettingRow(name = '') {
+            const container = document.getElementById('settings-buys-container');
+            const row = document.createElement('div');
+            row.className = 'setting-row buy-setting-item';
+            row.innerHTML = `
+                <input type="text" class="setting-input buy-name" placeholder="نام کالا" value="${name}">
+                <button type="button" class="btn-del" onclick="this.parentElement.remove()">✕</button>
+            `;
+            container.appendChild(row);
+        }
+
+        function saveAllSettings() {
+            const smsNotify = document.getElementById('cfg-sms-notify').checked;
+            localStorage.setItem('chekyar_sms_notify', smsNotify);
+
+            const medRows = document.querySelectorAll('.med-setting-item');
+            const newMeds = [];
+            medRows.forEach((r, idx) => {
+                const name = r.querySelector('.med-name').value.trim();
+                const time = r.querySelector('.med-time').value.trim();
+                if (name) newMeds.push({ id: idx + 1, name, time: time || 'ساعت مشخص نشده' });
+            });
+            localStorage.setItem('chekyar_meds_list', JSON.stringify(newMeds));
+
+            const buyRows = document.querySelectorAll('.buy-setting-item');
+            const newBuys = [];
+            buyRows.forEach((r, idx) => {
+                const name = r.querySelector('.buy-name').value.trim();
+                if (name) newBuys.push({ id: idx + 1, name });
+            });
+            localStorage.setItem('chekyar_buys_list', JSON.stringify(newBuys));
+
+            const p1 = document.getElementById('cfg-phone-1').value.trim();
+            const p2 = document.getElementById('cfg-phone-2').value.trim();
+            const newContacts = [
+                { name: 'فرزند اول (مراقب اصلی)', phone: p1, primary: true },
+                { name: 'فرزند دوم', phone: p2, primary: false }
+            ];
+            localStorage.setItem('chekyar_caregivers', JSON.stringify(newContacts));
+
+            renderMedsUI();
+            renderBuysUI();
+            renderContactsUI();
+            closeModal('settingsModal');
+            alert('تنظیمات با موفقیت ذخیره شدند ✅');
+        }
+
+        let isOut = localStorage.getItem('chekyar_is_out') === 'true';
+        function updateExitUI() {
             const btn = document.getElementById('exit-btn');
             const icon = document.getElementById('exit-icon');
             const title = document.getElementById('exit-title');
             const sub = document.getElementById('exit-subtitle');
 
             if (isOut) {
-                btn.style.backgroundColor = '#b03a2e'; // قرمز
+                btn.style.backgroundColor = '#b03a2e';
                 icon.innerText = '🏠';
                 title.innerText = 'به خانه برگشتم';
                 sub.innerText = 'برای ثبت بازگشت لمس کنید';
             } else {
-                btn.style.backgroundColor = 'var(--color-exit)'; // سبز
+                btn.style.backgroundColor = 'var(--color-exit)';
                 icon.innerText = '🚶';
                 title.innerText = 'من بیرون می‌روم';
                 sub.innerText = 'اطلاع به خانواده';
@@ -553,22 +680,22 @@
         }
 
         function handleExitToggle() {
+            const now = new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
             if (!isOut) {
-                if (confirm('آیا از خانه خارج می‌شوید؟ پیام خروج ثبت شود؟')) {
+                if (confirm('آیا از خانه خارج می‌شوید؟')) {
                     isOut = true;
                     localStorage.setItem('chekyar_is_out', 'true');
-                    updateExitButtonUI();
-                    alert('پیام «خروج از خانه» ثبت شد ✅');
+                    updateExitUI();
+                    triggerSmsNotification(`من در ساعت ${now} از خانه خارج شدم.`);
                 }
             } else {
                 isOut = false;
                 localStorage.setItem('chekyar_is_out', 'false');
-                updateExitButtonUI();
-                alert('خوش آمدید! بازگشت به خانه ثبت شد 🌸');
+                updateExitUI();
+                triggerSmsNotification(`من در ساعت ${now} به خانه برگشتم.`);
             }
         }
 
-        // ۷. منطق SOS (نگه داشتن ۳ ثانیه)
         let sosTimer = null;
         let sosRemaining = 3;
 
@@ -580,7 +707,7 @@
             const cnt = document.getElementById('sos-counter');
             
             circle.style.backgroundColor = '#e74c3c';
-            txt.innerText = 'در حال ارسال...';
+            txt.innerText = 'در حال ارتباط...';
             cnt.innerText = sosRemaining;
 
             sosTimer = setInterval(() => {
@@ -589,21 +716,18 @@
                 if (sosRemaining <= 0) {
                     clearInterval(sosTimer);
                     sosTimer = null;
-                    txt.innerText = 'در حال تماس!';
-                    cnt.innerText = '📞';
-                    
-                    const caregivers = getCaregivers();
-                    const primary = caregivers.find(c => c.primary) || caregivers[0];
+                    const contacts = getContacts();
+                    const primary = contacts.find(c => c.primary) || contacts[0];
                     if (primary && primary.phone) {
                         window.location.href = `tel:${primary.phone}`;
                     } else {
-                        alert('شماره مراقب اضطراری یافت نشد!');
+                        alert('شماره تماس اضطراری تنظیم نشده است.');
                     }
                 }
             }, 1000);
         }
 
-        function abortSOSHold(e) {
+        function abortSOSHold() {
             if (sosTimer) {
                 clearInterval(sosTimer);
                 sosTimer = null;
@@ -611,61 +735,29 @@
             const circle = document.getElementById('sos-interactive-btn');
             const txt = document.getElementById('sos-circle-text');
             const cnt = document.getElementById('sos-counter');
-            
             if (circle) circle.style.backgroundColor = 'var(--color-sos)';
             if (txt) txt.innerText = 'نگه دارید';
             if (cnt) cnt.innerText = '';
         }
 
-        // ۸. بازیابی داده‌های ذخیره شده در بارگذاری مجدد
-        function restoreState() {
-            // بازیابی داروها
-            [1, 2].forEach(id => {
-                const saved = localStorage.getItem(`med_${id}_done`);
-                if (saved) {
-                    const card = document.getElementById(`med-card-${id}`);
-                    const btn = document.getElementById(`med-btn-${id}`);
-                    const time = document.getElementById(`med-time-${id}`);
-                    if (card && btn && time) {
-                        card.classList.add('completed');
-                        btn.style.display = 'none';
-                        time.innerText = saved;
-                    }
-                }
-            });
+        function openModal(id) { document.getElementById(id).style.display = 'block'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; abortSOSHold(); }
 
-            // بازیابی خرید
-            const buySaved = localStorage.getItem('buy_1_done');
-            if (buySaved) {
-                const card = document.getElementById('buy-card-1');
-                const btn = document.getElementById('buy-btn-1');
-                const time = document.getElementById('buy-time-1');
-                if (card && btn && time) {
-                    card.classList.add('completed');
-                    btn.style.display = 'none';
-                    time.innerText = buySaved;
-                }
-            }
-
-            updateExitButtonUI();
-            renderContacts();
-            updateDashboardSummaries();
+        try {
+            document.getElementById('jalali-date').innerText = new Date().toLocaleDateString('fa-IR', { weekday: 'long', day: 'numeric', month: 'long' });
+        } catch (e) {
+            document.getElementById('jalali-date').innerText = 'امروز';
         }
 
-        function updateDashboardSummaries() {
-            const med1 = localStorage.getItem('med_1_done');
-            const med2 = localStorage.getItem('med_2_done');
-            if (med1 && med2) {
-                document.getElementById('meds-summary').innerText = 'همه داروهای امروز مصرف شدند ✅';
-            }
-        }
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMedsUI();
+            renderBuysUI();
+            renderContactsUI();
+            updateExitUI();
+        });
 
-        // اجرا در زمان بارگذاری صفحه
-        window.addEventListener('DOMContentLoaded', restoreState);
-
-        // ثبت سرویس ورکر PWA
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(err => console.log('SW registration error:', err));
+            navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
         }
     </script>
 </body>
