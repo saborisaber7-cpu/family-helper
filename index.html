@@ -1,492 +1,202 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>چک‌یار خانواده</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2e7d32">
-    <style>
-        :root {
-            --primary-color: #2e7d32;
-            --primary-light: #e8f5e9;
-            --danger-color: #c62828;
-            --text-color: #37474f;
-            --bg-color: #f1f8e9;
-            --card-bg: #ffffff;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Tahoma, Arial, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding: 15px;
-            padding-bottom: 125px;
-            font-size: 18px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .btn-settings {
-            background-color: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .info-bar {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .caregiver-info {
-            color: var(--primary-color);
-            margin-top: 5px;
-            font-size: 16px;
-        }
-
-        .action-card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border: 2px solid #e0e0e0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 100px;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .card-title {
-            font-size: 20px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .status-badge {
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .status-pending {
-            background-color: #ffe082;
-            color: #8f6f00;
-        }
-
-        .status-done {
-            background-color: #c8e6c9;
-            color: #2e7d32;
-        }
-
-        .btn-action {
-            width: 100%;
-            height: 60px;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        /* دکمه اضطراری SOS با انیمیشن پیشرفت ۳ ثانیه‌ای */
-        .sos-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(241, 248, 233, 1) 75%, rgba(241, 248, 233, 0) 100%);
-            padding: 15px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .btn-sos {
-            background-color: var(--danger-color);
-            color: white;
-            width: 100%;
-            height: 75px;
-            border: none;
-            border-radius: 40px;
-            font-size: 22px;
-            font-weight: bold;
-            box-shadow: 0 6px 12px rgba(198, 40, 40, 0.4);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .sos-progress {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 0%;
-            background-color: rgba(255, 255, 255, 0.35);
-            transition: width 0.05s linear;
-            pointer-events: none;
-        }
-
-        .sos-instruction {
-            font-size: 13px;
-            color: var(--danger-color);
-            margin-top: 6px;
-            font-weight: bold;
-        }
-
-        /* مودال تنظیمات */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background-color: white;
-            border-radius: 16px;
-            padding: 20px;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .modal-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .btn-modal-save {
-            background-color: var(--primary-color);
-            color: white;
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .btn-modal-close {
-            background-color: #eceff1;
-            color: #37474f;
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>چک‌یار؛ همراه و مراقب خانواده</title>
+  <meta name="theme-color" content="#1e4620">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root {
+      --bg: #eef4f1; --green: #1e4620; --green2: #2e7d32; --text: #234;
+      --muted: #6b7280; --shadow: 0 10px 28px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { margin: 0; font-family: system-ui, -apple-system, Tahoma, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 12px; }
+    .app { width: 100%; max-width: 430px; background: #fff; border-radius: 24px; box-shadow: var(--shadow); overflow: hidden; }
+    .hero { background: linear-gradient(135deg, var(--green), var(--green2)); color: #fff; padding: 18px 16px; position: relative; text-align: center; }
+    .settings-btn { position: absolute; left: 12px; top: 12px; border: 0; border-radius: 10px; background: rgba(255,255,255,.2); color: #fff; padding: 8px 12px; font-weight: 700; cursor: pointer; }
+    .logo { width: 70px; height: 70px; border-radius: 50%; background: #fff; padding: 4px; object-fit: contain; }
+    h1 { margin: 8px 0 2px; font-size: 22px; font-weight: 900; }
+    .subtitle { margin: 0; font-size: 13px; opacity: .9; }
+    .content { padding: 16px; }
+    .date { background: #f4fbf6; border: 1px solid #cde7d1; color: var(--green); padding: 8px; border-radius: 12px; margin-bottom: 12px; font-weight: 800; font-size: 13px; text-align: center; }
+    .contact-box { background: #f8fafb; border: 1px solid #e5e7eb; border-radius: 14px; padding: 10px; margin-bottom: 12px; text-align: right; }
+    .contact-box .lbl { font-size: 12px; color: var(--muted); }
+    .contact-box .val { font-size: 14px; font-weight: 800; color: #1f2937; margin-top: 2px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .card { background: #fff; border-radius: 16px; padding: 16px 8px; box-shadow: 0 3px 10px rgba(0,0,0,.04); cursor: pointer; border: 2px solid #e5e7eb; text-align: center; transition: .1s; }
+    .card:active { transform: scale(0.96); background: #f0fdf4; }
+    .card .icon { font-size: 32px; display: block; margin-bottom: 4px; }
+    .card span { display: block; font-size: 14px; font-weight: 800; }
+    .card small { display: block; margin-top: 4px; font-size: 11px; color: var(--muted); }
+    .card.done { border-color: #9ad59f; background: #f5fbf6; }
+    .card.done small { color: var(--green2); font-weight: 800; }
+    .sos { width: 100%; border: 0; border-radius: 16px; padding: 16px; background: linear-gradient(135deg,#d32f2f,#b71c1c); color: #fff; font-size: 17px; font-weight: 900; box-shadow: 0 6px 18px rgba(211,47,47,.25); cursor: pointer; }
+    .sos:active { transform: scale(0.97); }
+    .footer-btn { margin-top: 10px; width: 100%; border: 1px solid #cbd5e1; background: #f8fafc; border-radius: 12px; padding: 10px; font-weight: 800; cursor: pointer; color: #334155; }
+    
+    /* مودال تنظیمات */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 9999; align-items: center; justify-content: center; padding: 14px; }
+    .modal-content { width: 100%; max-width: 380px; background: #fff; border-radius: 18px; padding: 18px; text-align: right; }
+    .field { margin-bottom: 10px; }
+    label { display: block; font-size: 12px; font-weight: 800; margin-bottom: 4px; }
+    input { width: 100%; padding: 10px; border: 1.5px solid #d0d7de; border-radius: 8px; font-size: 14px; }
+    .save-btn { width: 100%; border: 0; border-radius: 10px; padding: 12px; background: var(--green); color: #fff; font-weight: 800; cursor: pointer; margin-top: 8px; }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>چک‌یار خانواده</h1>
-        <button class="btn-settings" onclick="openSettings()">⚙️ تنظیمات</button>
-    </header>
+<div class="app">
+  <div class="hero">
+    <button type="button" class="settings-btn" id="btn-settings">⚙️ شماره‌ها</button>
+    <img src="icon-512.png" alt="لوگو" class="logo" onerror="this.src='icon-192.png'">
+    <h1>چک‌یار</h1>
+    <p class="subtitle">همراه و مراقب خانواده شما</p>
+  </div>
 
-    <div class="info-bar">
-        <div id="current-date">امروز: بارگذاری...</div>
-        <div class="caregiver-info" id="main-caregiver-display">مراقب فعال: تعریف نشده</div>
+  <div class="content">
+    <div class="date" id="date-label">📅 امروز فعال است</div>
+
+    <div class="contact-box">
+      <div class="lbl">مخاطب اصلی:</div>
+      <div class="val" id="contact-view">ثبت نشده</div>
     </div>
 
-    <!-- ۱. کارت مصرف دارو و قرص -->
-    <div class="action-card">
-        <div class="card-header">
-            <span class="card-title">💊 مصرف دارو / قرص</span>
-            <span id="badge-med" class="status-badge status-pending">انجام نشده</span>
-        </div>
-        <button class="btn-action" onclick="triggerAction('med')">
-            <span>✅ اعلام مصرف دارو (SMS)</span>
-        </button>
+    <div class="grid">
+      <div class="card" id="card-shop">
+        <span class="icon">🛒</span><span>خرید / قبض</span><small id="st-shop">انجام نشده</small>
+      </div>
+      <div class="card" id="card-med">
+        <span class="icon">💊</span><span>مصرف دارو</span><small id="st-med">انجام نشده</small>
+      </div>
+      <div class="card" id="card-out">
+        <span class="icon">🚪</span><span>اطلاع خروج</span><small id="st-out">انجام نشده</small>
+      </div>
+      <div class="card" id="card-call">
+        <span class="icon">📞</span><span>تماس سریع</span><small>تماس تلفنی</small>
+      </div>
     </div>
 
-    <!-- ۲. کارت اطلاع خروج از منزل -->
-    <div class="action-card">
-        <div class="card-header">
-            <span class="card-title">🚶 اطلاع خروج از منزل</span>
-            <span id="badge-exit" class="status-badge status-pending">انجام نشده</span>
-        </div>
-        <button class="btn-action" onclick="triggerAction('exit')">
-            <span>🚪 اعلام خروج از منزل (SMS)</span>
-        </button>
+    <button type="button" class="sos" id="btn-sos">🚨 کمک اضطراری (SOS)</button>
+    <button type="button" class="footer-btn" id="btn-settings-bottom">ویرایش مخاطبین مراقب</button>
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h3 style="margin-top:0">⚙️ تنظیم مخاطب</h3>
+    <div class="field">
+      <label>نام مراقب</label>
+      <input type="text" id="inp-name" placeholder="مثلاً: فرزند ۱">
     </div>
-
-    <!-- ۳. کارت خرید مایحتاج و قبوض -->
-    <div class="action-card">
-        <div class="card-header">
-            <span class="card-title">🛒 خرید مایحتاج / قبوض</span>
-            <span id="badge-shopping" class="status-badge status-pending">انجام نشده</span>
-        </div>
-        <button class="btn-action" onclick="triggerAction('shopping')">
-            <span>📢 ارسال پیامک درخواست خرید</span>
-        </button>
+    <div class="field">
+      <label>شماره تماس (پیامک و تماس)</label>
+      <input type="tel" id="inp-phone" placeholder="09120000000" dir="ltr">
     </div>
+    <button type="button" class="save-btn" id="btn-save">ذخیره و تأیید</button>
+  </div>
+</div>
 
-    <!-- دکمه SOS اضطراری با مکانیسم نگه‌داشتن ۳ ثانیه‌ای -->
-    <div class="sos-container">
-        <button class="btn-sos" id="sos-btn">
-            <div class="sos-progress" id="sos-progress-bar"></div>
-            🚨 کمک اضطراری (SOS)
-        </button>
-        <div class="sos-instruction">برای فعال‌سازی، دکمه را ۳ ثانیه فشرده نگه دارید</div>
-    </div>
+<script>
+  // تابع تضمین شده برای باز کردن پروتکل‌های بومی در وب‌ویو و موبایل
+  function directOpen(url) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => a.remove(), 200);
+  }
 
-    <!-- مودال تنظیمات -->
-    <div class="modal" id="settings-modal">
-        <div class="modal-content">
-            <div class="modal-title">⚙️ تنظیمات شماره مراقب</div>
-            
-            <div class="form-group">
-                <label for="caregiver-phone">شماره موبایل مراقب اصلی:</label>
-                <input type="tel" id="caregiver-phone" placeholder="مثال: 09123456789">
-            </div>
+  function getContact() {
+    return {
+      name: localStorage.getItem('cy_name') || 'فرزند (مراقب)',
+      phone: localStorage.getItem('cy_phone') || '09120000000'
+    };
+  }
 
-            <div class="form-group">
-                <label for="shopping-list">لیست خرید / توضیحات:</label>
-                <textarea id="shopping-list" rows="3" placeholder="نان، شیر، میوه، قبض..."></textarea>
-            </div>
+  function updateDisplay() {
+    const c = getContact();
+    document.getElementById('contact-view').innerText = `${c.name} (${c.phone})`;
+    
+    ['shop', 'med', 'out'].forEach(k => {
+      const isDone = localStorage.getItem('cy_' + k) === '1';
+      document.getElementById('st-' + k).innerText = isDone ? 'انجام شد ✅' : 'انجام نشده';
+      document.getElementById('card-' + k).classList.toggle('done', isDone);
+    });
+  }
 
-            <button class="btn-modal-save" onclick="saveSettings()">ذخیره اطلاعات</button>
-            <button class="btn-modal-close" onclick="closeSettings()">بستن</button>
-        </div>
-    </div>
+  function handleAction(type, text) {
+    const c = getContact();
+    localStorage.setItem('cy_' + type, '1');
+    updateDisplay();
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const sep = isIOS ? '&' : '?';
+    directOpen(`sms:${c.phone}${sep}body=${encodeURIComponent(text)}`);
+  }
 
-    <script>
-        let caregiverPhone = "";
-        let shoppingItems = "نان، شیر و لبنیات، میوه";
-        
-        let sosTimer = null;
-        let sosProgress = 0;
-        const sosDuration = 3000;
-        const intervalStep = 50;
-        const sosBtn = document.getElementById('sos-btn');
-        const progressBar = document.getElementById('sos-progress-bar');
+  // ثبت ایونت لیسنرهای مستقیم (جلوگیری از مسدود شدن onclick)
+  document.getElementById('card-shop').addEventListener('click', () => {
+    handleAction('shop', 'پیام از چک‌یار: خرید یا قبض من پرداخت و انجام شد.');
+  });
 
-        window.addEventListener('DOMContentLoaded', () => {
-            loadSettings();
-            setupSOSButton();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('current-date').innerText = "امروز: " + new Date().toLocaleDateString('fa-IR', options);
-        });
+  document.getElementById('card-med').addEventListener('click', () => {
+    handleAction('med', 'پیام از چک‌یار: داروی من به موقع مصرف شد.');
+  });
 
-        function loadSettings() {
-            const savedPhone = localStorage.getItem('chekyar_phone');
-            const savedShopping = localStorage.getItem('chekyar_shopping');
-            
-            if (savedPhone) {
-                caregiverPhone = savedPhone;
-                document.getElementById('caregiver-phone').value = savedPhone;
-                document.getElementById('main-caregiver-display').innerText = `مراقب فعال: ${savedPhone}`;
-            } else {
-                document.getElementById('main-caregiver-display').innerText = "مراقب فعال: ثبت نشده ⚠️";
-            }
+  document.getElementById('card-out').addEventListener('click', () => {
+    handleAction('out', 'پیام از چک‌یار: من در حال حاضر از منزل خارج شدم.');
+  });
 
-            if (savedShopping) {
-                shoppingItems = savedShopping;
-                document.getElementById('shopping-list').value = savedShopping;
-            }
-        }
+  document.getElementById('card-call').addEventListener('click', () => {
+    const c = getContact();
+    directOpen(`tel:${c.phone}`);
+  });
 
-        function openSettings() {
-            document.getElementById('settings-modal').style.display = 'flex';
-        }
+  document.getElementById('btn-sos').addEventListener('click', () => {
+    const c = getContact();
+    directOpen(`tel:${c.phone}`);
+  });
 
-        function closeSettings() {
-            document.getElementById('settings-modal').style.display = 'none';
-        }
+  // بخش تنظیمات
+  const modal = document.getElementById('modal');
+  function openModal() {
+    const c = getContact();
+    document.getElementById('inp-name').value = c.name;
+    document.getElementById('inp-phone').value = c.phone;
+    modal.style.display = 'flex';
+  }
 
-        function saveSettings() {
-            const phoneInput = document.getElementById('caregiver-phone').value.trim();
-            const shoppingInput = document.getElementById('shopping-list').value.trim();
+  document.getElementById('btn-settings').addEventListener('click', openModal);
+  document.getElementById('btn-settings-bottom').addEventListener('click', openModal);
 
-            if (!phoneInput) {
-                alert("لطفاً شماره موبایل مراقب را وارد کنید.");
-                return;
-            }
+  document.getElementById('btn-save').addEventListener('click', () => {
+    const name = document.getElementById('inp-name').value.trim();
+    const phone = document.getElementById('inp-phone').value.trim();
+    if(phone) {
+      localStorage.setItem('cy_name', name || 'مراقب');
+      localStorage.setItem('cy_phone', phone);
+      modal.style.display = 'none';
+      updateDisplay();
+    }
+  });
 
-            localStorage.setItem('chekyar_phone', phoneInput);
-            localStorage.setItem('chekyar_shopping', shoppingInput);
-            
-            caregiverPhone = phoneInput;
-            shoppingItems = shoppingInput;
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal) modal.style.display = 'none';
+  });
 
-            document.getElementById('main-caregiver-display').innerText = `مراقب فعال: ${phoneInput}`;
-            closeSettings();
-            alert("تنظیمات با موفقیت ذخیره شد.");
-        }
+  // تاریخ شمسی
+  try {
+    const d = new Date().toLocaleDateString('fa-IR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+    document.getElementById('date-label').innerText = '📅 ' + d;
+  } catch(e){}
 
-        function getSMSDivider() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            return (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) ? '&' : '?';
-        }
+  updateDisplay();
 
-        function triggerAction(type) {
-            if (!caregiverPhone) {
-                alert("⚠️ لطفاً ابتدا شماره مراقب را در تنظیمات وارد نمایید.");
-                openSettings();
-                return;
-            }
-
-            let message = "";
-            let badgeId = "";
-
-            if (type === 'med') {
-                message = "سلام، من قرص/دارویم را مصرف کردم. (چک‌یار)";
-                badgeId = "badge-med";
-            } else if (type === 'exit') {
-                message = "سلام، من از منزل خارج شدم. (چک‌یار)";
-                badgeId = "badge-exit";
-            } else if (type === 'shopping') {
-                message = `سلام، لطفاً این اقلام را برای من تهیه کنید: (${shoppingItems}) (چک‌یار)`;
-                badgeId = "badge-shopping";
-            }
-
-            const badge = document.getElementById(badgeId);
-            if (badge) {
-                badge.innerText = "انجام شد ✅";
-                badge.className = "status-badge status-done";
-            }
-
-            const divider = getSMSDivider();
-            window.location.href = `sms:${caregiverPhone}${divider}body=${encodeURIComponent(message)}`;
-        }
-
-        function setupSOSButton() {
-            const startPress = (e) => {
-                if (e.type === 'touchstart') e.preventDefault();
-                if (!caregiverPhone) {
-                    alert("⚠️ شماره مراقب در تنظیمات ثبت نشده است.");
-                    openSettings();
-                    return;
-                }
-                
-                sosProgress = 0;
-                progressBar.style.width = '0%';
-                
-                sosTimer = se(() => {
-                    sosProgress += (intervalStep / sosDuration) * 100;
-                    if (sosProgress >= 100) {
-                        progressBar.style.width = '100%';
-                        triggerSOS();
-                        resetSOSProgress();
-                    } else {
-                        progressBar.style.width = `${sosProgress}%`;
-                    }
-                }, intervalStep);
-            };
-
-            const endPress = () => {
-                resetSOSProgress();
-            };
-
-            sosBtn.addEventListener('mousedown', startPress);
-            sosBtn.addEventListener('touchstart', startPress, { passive: false });
-            sosBtn.addEventListener('mouseup', endPress);
-            sosBtn.addEventListener('mouseleave', endPress);
-            sosBtn.addEventListener('touchend', endPress);
-            sosBtn.addEventListener('touchcancel', endPress);
-        }
-
-        function resetSOSProgress() {
-            if (sosTimer) {
-                clearInterval(sosTimer);
-                sosTimer = null;
-            }
-            sosProgress = 0;
-            progressBar.style.width = '0%';
-        }
-
-        function triggerSOS() {
-            window.location.href = `tel:${caregiverPhone}`;
-            setTimeout(() => {
-                const divider = getSMSDivider();
-                const sosMsg = "⚠️ پیام اضطراری: من به کمک نیاز دارم! لطفاً سریعاً با من تماس بگیرید. (چک‌یار)";
-                window.location.href = `sms:${caregiverPhone}${divider}body=${encodeURIComponent(sosMsg)}`;
-            }, 1200);
-        }
-
-        window.onclick = function(e) {
-            if (e.target === document.getElementById('settings-modal'))
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  }
+</script>
+</body>
+</html>
