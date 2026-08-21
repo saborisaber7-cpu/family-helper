@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chekyar-cache-v3-2025-02';
+const CACHE_NAME = 'chekyar-cache-v4-fixed';
 const urlsToCache = [
   './',
   './index.html',
@@ -26,10 +26,6 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request).then(fetchResponse => {
-      const responseClone = fetchResponse.clone();
-      caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
-      return fetchResponse;
-    }).catch(() => caches.match('./index.html')))
+    fetch(event.request).catch(() => caches.match(event.request))
   );
 });
