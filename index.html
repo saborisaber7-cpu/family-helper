@@ -11,36 +11,35 @@
       box-sizing: border-box; 
       margin: 0; 
       padding: 0; 
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Tahoma, sans-serif; 
+      font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif; 
       -webkit-tap-highlight-color: transparent; 
     }
     body { 
-      background-color: #f0f4f1; 
-      color: #2e3d32; 
+      background-color: #eef4ee; 
+      color: #1a2e1e; 
       display: flex; 
       justify-content: center; 
       min-height: 100vh; 
-      padding: 12px; 
+      padding: 10px; 
     }
     .container { 
       width: 100%; 
-      max-width: 440px; 
+      max-width: 600px; 
       background: #ffffff; 
-      border-radius: 24px; 
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06); 
-      padding: 18px; 
+      border-radius: 28px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+      padding: 20px; 
       display: flex; 
       flex-direction: column; 
-      gap: 14px; 
-      position: relative; 
+      gap: 16px; 
     }
     
-    /* هدر با تفکیک کامل عنوان و دکمه تنظیمات */
+    /* هدر با اندازه بزرگ */
     .header { 
       background: linear-gradient(135deg, #1b5e20, #2e7d32); 
       color: white; 
-      padding: 16px; 
-      border-radius: 18px; 
+      padding: 20px; 
+      border-radius: 22px; 
     }
     .header-top { 
       display: flex; 
@@ -50,19 +49,19 @@
     .title-area { 
       display: flex; 
       align-items: center; 
-      gap: 10px; 
+      gap: 12px; 
     }
     .app-title { 
-      font-size: 20px; 
-      font-weight: 800; 
+      font-size: 26px; 
+      font-weight: 900; 
     }
     .settings-btn { 
-      background: rgba(255,255,255,0.2); 
-      border: none; 
-      font-size: 20px; 
-      width: 38px; 
-      height: 38px; 
-      border-radius: 50%; 
+      background: rgba(255,255,255,0.25); 
+      border: 2px solid rgba(255,255,255,0.4); 
+      font-size: 24px; 
+      width: 48px; 
+      height: 48px; 
+      border-radius: 14px; 
       color: white; 
       cursor: pointer; 
       display: flex; 
@@ -70,175 +69,204 @@
       justify-content: center; 
     }
     .header-info { 
-      margin-top: 10px; 
-      font-size: 13px; 
-      opacity: 0.9; 
+      margin-top: 14px; 
+      font-size: 16px; 
+      font-weight: bold;
       display: flex; 
       justify-content: space-between; 
+      border-top: 1px solid rgba(255,255,255,0.25);
+      padding-top: 10px;
     }
 
-    /* کارت‌های اصلی ۴ تایی */
+    /* کارت‌های اصلی ۴ تایی بزرگ */
     .cards-grid { 
       display: grid; 
       grid-template-columns: 1fr 1fr; 
-      gap: 12px; 
+      gap: 14px; 
     }
     .card { 
-      background: #f9fbf9; 
-      border: 2px solid #e0ebd0; 
-      border-radius: 18px; 
-      padding: 16px 12px; 
+      background: #f8faf8; 
+      border: 3px solid #d2e4d2; 
+      border-radius: 22px; 
+      padding: 20px 14px; 
       text-align: center; 
       cursor: pointer; 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
       justify-content: center; 
-      min-height: 125px; 
-      transition: transform 0.1s, border-color 0.2s; 
+      min-height: 155px; 
+      transition: transform 0.1s, border-color 0.2s, background 0.2s; 
     }
     .card:active { 
-      transform: scale(0.97); 
+      transform: scale(0.96); 
     }
     .card.completed { 
       background: #e8f5e9; 
-      border-color: #4caf50; 
+      border-color: #2e7d32; 
     }
     .card-icon { 
-      font-size: 34px; 
-      margin-bottom: 6px; 
+      font-size: 46px; 
+      margin-bottom: 8px; 
     }
     .card-title { 
-      font-size: 16px; 
-      font-weight: 700; 
+      font-size: 20px; 
+      font-weight: 800; 
       color: #1b5e20; 
     }
     .card-status { 
-      font-size: 11px; 
-      margin-top: 5px; 
-      color: #757575; 
-      font-weight: 600; 
+      font-size: 14px; 
+      margin-top: 6px; 
+      color: #616161; 
+      font-weight: 700; 
     }
     .card.completed .card-status { 
-      color: #2e7d32; 
+      color: #1b5e20; 
     }
 
-    /* دکمه‌های مستقیم تماس و SOS */
+    /* دکمه‌های بزرگ تماس و SOS */
     .quick-call-btn { 
       background: #2e7d32; 
       color: white; 
       border: none; 
-      border-radius: 16px; 
-      padding: 14px; 
-      font-size: 16px; 
-      font-weight: bold; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: 8px; 
-      cursor: pointer; 
-      width: 100%; 
-    }
-    .sos-btn { 
-      background: linear-gradient(135deg, #d32f2f, #b71c1c); 
-      color: white; 
-      border: none; 
-      border-radius: 18px; 
-      padding: 16px; 
-      font-size: 18px; 
-      font-weight: 900; 
+      border-radius: 20px; 
+      padding: 18px; 
+      font-size: 20px; 
+      font-weight: 800; 
       display: flex; 
       align-items: center; 
       justify-content: center; 
       gap: 10px; 
       cursor: pointer; 
-      box-shadow: 0 6px 16px rgba(211,47,47,0.3); 
+      width: 100%; 
+      box-shadow: 0 4px 12px rgba(46,125,50,0.25);
+    }
+    .sos-btn { 
+      background: linear-gradient(135deg, #d32f2f, #b71c1c); 
+      color: white; 
+      border: none; 
+      border-radius: 20px; 
+      padding: 20px; 
+      font-size: 22px; 
+      font-weight: 900; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 12px; 
+      cursor: pointer; 
+      box-shadow: 0 8px 20px rgba(211,47,47,0.35); 
       width: 100%; 
     }
     
-    /* پنجره‌های مودال */
+    /* مودال‌های بزرگ با ورودی‌های خوانا */
     .modal-overlay { 
       position: fixed; 
       inset: 0; 
-      background: rgba(0,0,0,0.55); 
+      background: rgba(0,0,0,0.65); 
       display: none; 
       align-items: center; 
       justify-content: center; 
       padding: 16px; 
-      z-index: 100; 
+      z-index: 1000; 
     }
     .modal-overlay.active { 
       display: flex; 
     }
     .modal-box { 
       background: white; 
-      border-radius: 22px; 
+      border-radius: 24px; 
       width: 100%; 
-      max-width: 380px; 
-      padding: 20px; 
-      box-shadow: 0 16px 32px rgba(0,0,0,0.2); 
+      max-width: 480px; 
+      padding: 24px; 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25); 
+      max-height: 90vh;
+      overflow-y: auto;
     }
     .modal-title { 
-      font-size: 17px; 
-      font-weight: 800; 
+      font-size: 22px; 
+      font-weight: 900; 
       color: #1b5e20; 
-      margin-bottom: 14px; 
+      margin-bottom: 18px; 
+      text-align: center;
     }
     .form-group { 
-      margin-bottom: 12px; 
+      margin-bottom: 16px; 
     }
     .form-group label { 
       display: block; 
-      font-size: 12px; 
-      font-weight: bold; 
-      margin-bottom: 5px; 
-      color: #555; 
+      font-size: 16px; 
+      font-weight: 800; 
+      margin-bottom: 8px; 
+      color: #2b3b2c; 
     }
     .form-control { 
       width: 100%; 
-      padding: 10px 12px; 
-      border: 1.5px solid #cfd8dc; 
-      border-radius: 12px; 
-      font-size: 14px; 
+      padding: 14px 16px; 
+      border: 2.5px solid #bdcbd0; 
+      border-radius: 16px; 
+      font-size: 17px; 
       outline: none; 
+      font-weight: 600;
+    }
+    .form-control:focus {
+      border-color: #2e7d32;
+    }
+    .time-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn-now {
+      background: #e0ebd0;
+      border: 2px solid #2e7d32;
+      color: #1b5e20;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
     }
     .quick-chips { 
       display: flex; 
       flex-wrap: wrap; 
-      gap: 6px; 
-      margin-top: 6px; 
+      gap: 8px; 
+      margin-top: 10px; 
     }
     .chip { 
-      background: #f0f4f1; 
-      border: 1px solid #d0e0d0; 
-      padding: 5px 10px; 
-      border-radius: 8px; 
-      font-size: 12px; 
+      background: #eef6ed; 
+      border: 1.5px solid #a3cda1; 
+      padding: 8px 14px; 
+      border-radius: 12px; 
+      font-size: 14px; 
+      font-weight: 700;
+      color: #1b5e20;
       cursor: pointer; 
     }
     .modal-actions { 
       display: flex; 
-      gap: 8px; 
-      margin-top: 18px; 
+      flex-direction: column;
+      gap: 10px; 
+      margin-top: 22px; 
     }
     .btn-submit { 
-      flex: 2; 
       background: #2e7d32; 
       color: white; 
       border: none; 
-      border-radius: 12px; 
-      padding: 12px; 
-      font-weight: bold; 
+      border-radius: 16px; 
+      padding: 16px; 
+      font-size: 18px;
+      font-weight: 900; 
       cursor: pointer; 
     }
     .btn-cancel { 
-      flex: 1; 
-      background: #eceff1; 
-      color: #455a64; 
+      background: #f1f3f4; 
+      color: #5f6368; 
       border: none; 
-      border-radius: 12px; 
-      padding: 12px; 
-      font-weight: bold; 
+      border-radius: 16px; 
+      padding: 14px; 
+      font-size: 16px;
+      font-weight: 700; 
       cursor: pointer; 
     }
   </style>
@@ -250,18 +278,18 @@
   <div class="header">
     <div class="header-top">
       <div class="title-area">
-        <span style="font-size: 24px;">🌿</span>
+        <span style="font-size: 32px;">🌿</span>
         <div class="app-title">چک‌یار</div>
       </div>
       <button class="settings-btn" onclick="openSettings()" title="تنظیمات">⚙️</button>
     </div>
     <div class="header-info">
-      <div>مراقب: <span id="header-caregiver-name">مراقب اصلی</span></div>
+      <div>مراقب: <span id="header-caregiver-name">علی</span></div>
       <div id="jalali-date">امروز</div>
     </div>
   </div>
 
-  <!-- کارت‌های دسترسی سریع -->
+  <!-- کارت‌های ۴ تایی درشت -->
   <div class="cards-grid">
     <div class="card" id="card-med" onclick="openMedModal()">
       <div class="card-icon">💊</div>
@@ -271,7 +299,7 @@
     <div class="card" id="card-shop" onclick="openShopModal()">
       <div class="card-icon">🛒</div>
       <div class="card-title">خرید و قبوض</div>
-      <div class="card-status" id="status-shop">انجام نشده</div>
+      <div class="card-status" id="status-shop">درخواست به مراقب</div>
     </div>
     <div class="card" id="card-exit" onclick="openExitModal()">
       <div class="card-icon">🚪</div>
@@ -286,102 +314,138 @@
   </div>
 
   <button class="quick-call-btn" onclick="makeQuickCall()">📞 تماس تلفنی با مراقب</button>
-  <button class="sos-btn" onclick="sendSOS()">🚨 درخواست فوری (SOS)</button>
+  <button class="sos-btn" onclick="sendSOS()">🚨 کمک فوری و اضطراری (SOS)</button>
 </div>
 
-<!-- پنجره مودال تنظیمات -->
+<!-- مودال تنظیمات -->
 <div class="modal-overlay" id="modal-settings">
   <div class="modal-box">
-    <div class="modal-title">⚙️ تنظیمات و شماره مراقب</div>
+    <div class="modal-title">⚙️ تنظیمات شماره مراقب</div>
     <div class="form-group">
-      <label>نام مراقب / فرزند:</label>
-      <input type="text" id="cfg-name" class="form-control" placeholder="مثلاً: علی (پسرم)">
+      <label>نام مراقب (فرزند / همراه):</label>
+      <input type="text" id="cfg-name" class="form-control" placeholder="مثلاً: علی">
     </div>
     <div class="form-group">
-      <label>شماره تماس مراقب (قابل ویرایش):</label>
+      <label>شماره تماس مراقب:</label>
       <input type="tel" id="cfg-phone" class="form-control" placeholder="0912xxxxxxx" dir="ltr">
     </div>
     <div class="modal-actions">
-      <button class="btn-submit" onclick="saveSettings()">ذخیره تنظیمات</button>
+      <button class="btn-submit" onclick="saveSettings()">💾 ذخیره تنظیمات</button>
       <button class="btn-cancel" onclick="closeModals()">بستن</button>
     </div>
   </div>
 </div>
 
-<!-- پنجره مودال ثبت دارو -->
+<!-- مودال دارو (با ساعت) -->
 <div class="modal-overlay" id="modal-med">
   <div class="modal-box">
     <div class="modal-title">💊 ثبت مصرف دارو</div>
     <div class="form-group">
       <label>نام دارو:</label>
-      <input type="text" id="med-name" class="form-control" placeholder="مثلاً: قرص فشار">
+      <input type="text" id="med-name" class="form-control" placeholder="مثلاً: قرص فشار و قند">
       <div class="quick-chips">
         <span class="chip" onclick="setMedName('قرص فشار')">قرص فشار</span>
         <span class="chip" onclick="setMedName('قرص قند')">قرص قند</span>
         <span class="chip" onclick="setMedName('انسولین')">انسولین</span>
+        <span class="chip" onclick="setMedName('داروی قلبی')">داروی قلبی</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>ساعت مصرف دارو:</label>
+      <div class="time-row">
+        <input type="time" id="med-time" class="form-control" style="direction: ltr;">
+        <button class="btn-now" onclick="setCurrentTime('med-time')">الان ⏰</button>
       </div>
     </div>
     <div class="modal-actions">
-      <button class="btn-submit" onclick="confirmMedAction()">تایید و ارسال پیامک</button>
+      <button class="btn-submit" onclick="confirmMedAction()">✅ ثبت و ارسال پیامک به مراقب</button>
       <button class="btn-cancel" onclick="closeModals()">انصراف</button>
     </div>
   </div>
 </div>
 
-<!-- پنجره مودال خرید -->
+<!-- مودال خرید و قبوض -->
 <div class="modal-overlay" id="modal-shop">
   <div class="modal-box">
-    <div class="modal-title">🛒 خرید یا پرداخت قبض</div>
+    <div class="modal-title">🛒 درخواست خرید یا پرداخت قبوض</div>
     <div class="form-group">
-      <label>توضیح:</label>
-      <input type="text" id="shop-desc" class="form-control" placeholder="مثلاً: خرید نان">
+      <label>اقلام مورد نیاز یا مشخصات قبض:</label>
+      <textarea id="shop-desc" class="form-control" rows="3" placeholder="مثلاً: لطفاً ۲ عدد نان و شیر خریده شود یا قبض برق پرداخت گردد"></textarea>
       <div class="quick-chips">
-        <span class="chip" onclick="setShopDesc('خرید نان و لبنیات')">خرید نان</span>
-        <span class="chip" onclick="setShopDesc('پرداخت قبض آب/برق')">پرداخت قبض</span>
+        <span class="chip" onclick="appendShopText('خرید نان و لبنیات')">+ خرید نان</span>
+        <span class="chip" onclick="appendShopText('خرید میوه')">+ خرید میوه</span>
+        <span class="chip" onclick="appendShopText('پرداخت قبض آب و برق')">+ پرداخت قبض</span>
       </div>
     </div>
     <div class="modal-actions">
-      <button class="btn-submit" onclick="confirmShopAction()">تایید و ارسال پیامک</button>
+      <button class="btn-submit" onclick="confirmShopAction()">📩 ارسال لیست خرید به مراقب</button>
       <button class="btn-cancel" onclick="closeModals()">انصراف</button>
     </div>
   </div>
 </div>
 
-<!-- پنجره مودال خروج -->
+<!-- مودال خروج و بازگشت با ساعت -->
 <div class="modal-overlay" id="modal-exit">
   <div class="modal-box">
-    <div class="modal-title">🚪 اطلاع خروج از منزل</div>
+    <div class="modal-title">🚪 اطلاع خروج و ساعت برگشت</div>
     <div class="form-group">
-      <label>مقصد:</label>
-      <input type="text" id="exit-dest" class="form-control" placeholder="مثلاً: نانوایی">
+      <label>مقصد یا هدف خروج:</label>
+      <input type="text" id="exit-dest" class="form-control" placeholder="مثلاً: نانوایی / مسجد / پارک">
       <div class="quick-chips">
         <span class="chip" onclick="setExitDest('نانوایی')">نانوایی</span>
-        <span class="chip" onclick="setExitDest('پیاده‌روی')">پیاده‌روی</span>
+        <span class="chip" onclick="setExitDest('پیاده‌روی در پارک')">پارک</span>
+        <span class="chip" onclick="setExitDest('مسجد')">مسجد</span>
+        <span class="chip" onclick="setExitDest('مطب دکتر')">مطب دکتر</span>
       </div>
     </div>
+    <div class="form-group">
+      <label>ساعت خروج:</label>
+      <div class="time-row">
+        <input type="time" id="exit-time" class="form-control" style="direction: ltr;">
+        <button class="btn-now" onclick="setCurrentTime('exit-time')">الان ⏰</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>ساعت تقریبی بازگشت به خانه:</label>
+      <input type="time" id="return-time" class="form-control" style="direction: ltr;">
+    </div>
     <div class="modal-actions">
-      <button class="btn-submit" onclick="confirmExitAction()">تایید و خروج</button>
+      <button class="btn-submit" onclick="confirmExitAction()">🚶‍♂️ اطلاع به مراقب و ثبت خروج</button>
       <button class="btn-cancel" onclick="closeModals()">انصراف</button>
     </div>
   </div>
 </div>
 
 <script>
-  let chekyarData = JSON.parse(localStorage.getItem('chekyar_v5')) || {
+  let chekyarData = JSON.parse(localStorage.getItem('chekyar_v6')) || {
     caregiverPhone: '09120000000',
     caregiverName: 'مراقب اصلی',
-    actions: { med: { done: false }, shop: { done: false }, exit: { done: false } }
+    actions: { 
+      med: { done: false, info: '' }, 
+      shop: { done: false, info: '' }, 
+      exit: { done: false, info: '' } 
+    }
   };
 
-  document.getElementById('jalali-date').innerText = new Intl.DateTimeFormat('fa-IR').format(new Date());
+  document.getElementById('jalali-date').innerText = new Intl.DateTimeFormat('fa-IR', { dateStyle: 'full' }).format(new Date());
+
+  function getNowTimeString() {
+    const now = new Date();
+    return String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+  }
+
+  function setCurrentTime(elementId) {
+    document.getElementById(elementId).value = getNowTimeString();
+  }
 
   function initUI() {
     document.getElementById('header-caregiver-name').innerText = chekyarData.caregiverName;
     document.getElementById('cfg-name').value = chekyarData.caregiverName;
     document.getElementById('cfg-phone').value = chekyarData.caregiverPhone;
-    updateCardUI('med', chekyarData.actions.med.done, 'انجام شد');
-    updateCardUI('shop', chekyarData.actions.shop.done, 'درخواست شد');
-    updateCardUI('exit', chekyarData.actions.exit.done, 'خارج از منزل');
+
+    updateCardUI('med', chekyarData.actions.med.done, chekyarData.actions.med.info || 'مصرف شد');
+    updateCardUI('shop', chekyarData.actions.shop.done, 'درخواست ارسال شد');
+    updateCardUI('exit', chekyarData.actions.exit.done, chekyarData.actions.exit.info || 'خارج از منزل');
   }
 
   function updateCardUI(id, isDone, label) {
@@ -392,24 +456,33 @@
       status.innerText = label;
     } else {
       card.classList.remove('completed');
-      status.innerText = (id === 'exit' ? 'در منزل' : 'انجام نشده');
+      status.innerText = (id === 'exit' ? 'در منزل' : (id === 'shop' ? 'درخواست به مراقب' : 'انجام نشده'));
     }
   }
 
   function openSettings() { document.getElementById('modal-settings').classList.add('active'); }
-  function openMedModal() { document.getElementById('modal-med').classList.add('active'); }
+  function openMedModal() { 
+    setCurrentTime('med-time');
+    document.getElementById('modal-med').classList.add('active'); 
+  }
   function openShopModal() { document.getElementById('modal-shop').classList.add('active'); }
-  function openExitModal() { document.getElementById('modal-exit').classList.add('active'); }
+  function openExitModal() { 
+    setCurrentTime('exit-time');
+    document.getElementById('modal-exit').classList.add('active'); 
+  }
   function closeModals() { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active')); }
 
   function setMedName(v) { document.getElementById('med-name').value = v; }
-  function setShopDesc(v) { document.getElementById('shop-desc').value = v; }
+  function appendShopText(v) { 
+    const area = document.getElementById('shop-desc');
+    area.value = area.value ? (area.value + ' + ' + v) : v;
+  }
   function setExitDest(v) { document.getElementById('exit-dest').value = v; }
 
   function saveSettings() {
-    chekyarData.caregiverName = document.getElementById('cfg-name').value || 'مراقب';
-    chekyarData.caregiverPhone = document.getElementById('cfg-phone').value || '';
-    localStorage.setItem('chekyar_v5', JSON.stringify(chekyarData));
+    chekyarData.caregiverName = document.getElementById('cfg-name').value.trim() || 'مراقب';
+    chekyarData.caregiverPhone = document.getElementById('cfg-phone').value.trim() || '';
+    localStorage.setItem('chekyar_v6', JSON.stringify(chekyarData));
     initUI();
     closeModals();
   }
@@ -423,36 +496,41 @@
   }
 
   function confirmMedAction() {
-    const med = document.getElementById('med-name').value || 'دارو';
+    const med = document.getElementById('med-name').value.trim() || 'دارو';
+    const time = document.getElementById('med-time').value || getNowTimeString();
     chekyarData.actions.med.done = true;
-    localStorage.setItem('chekyar_v5', JSON.stringify(chekyarData));
-    updateCardUI('med', true, 'انجام شد');
-    sendSMS(`✅ دارو مصرف شد: ${med}`);
+    chekyarData.actions.med.info = `ساعت ${time} مصرف شد`;
+    localStorage.setItem('chekyar_v6', JSON.stringify(chekyarData));
+    updateCardUI('med', true, chekyarData.actions.med.info);
+    sendSMS(`✅ دارو مصرف شد:\nدارو: ${med}\nساعت: ${time}`);
     closeModals();
   }
 
   function confirmShopAction() {
-    const desc = document.getElementById('shop-desc').value || 'خرید/قبض';
+    const desc = document.getElementById('shop-desc').value.trim() || 'موارد ضروری';
     chekyarData.actions.shop.done = true;
-    localStorage.setItem('chekyar_v5', JSON.stringify(chekyarData));
-    updateCardUI('shop', true, 'درخواست شد');
-    sendSMS(`🛒 درخواست خرید/قبض: ${desc}`);
+    localStorage.setItem('chekyar_v6', JSON.stringify(chekyarData));
+    updateCardUI('shop', true, 'درخواست فرستاده شد');
+    sendSMS(`🛒 درخواست خرید / انجام کار برای من:\n${desc}`);
     closeModals();
   }
 
   function confirmExitAction() {
-    const dest = document.getElementById('exit-dest').value || 'بیرون';
+    const dest = document.getElementById('exit-dest').value.trim() || 'بیرون از خانه';
+    const exitT = document.getElementById('exit-time').value || getNowTimeString();
+    const retT = document.getElementById('return-time').value || 'مشخص نشده';
     chekyarData.actions.exit.done = true;
-    localStorage.setItem('chekyar_v5', JSON.stringify(chekyarData));
-    updateCardUI('exit', true, 'خارج از منزل');
-    sendSMS(`🚪 خروج از منزل به مقصد: ${dest}`);
+    chekyarData.actions.exit.info = `خروج ساعت ${exitT}`;
+    localStorage.setItem('chekyar_v6', JSON.stringify(chekyarData));
+    updateCardUI('exit', true, chekyarData.actions.exit.info);
+    sendSMS(`🚪 اطلاع خروج از منزل:\nمقصد: ${dest}\nساعت خروج: ${exitT}\nساعت برگشت تقریبی: ${retT}`);
     closeModals();
   }
 
   function sendSOS() {
-    if(confirm("آیا از ارسال پیامک درخواست کمک فوری اطمینان دارید؟")) {
-      sendSMS("🚨 کمک فوری! من نیاز به کمک دارم. لطفاً تماس بگیرید.");
-      setTimeout(makeQuickCall, 1200);
+    if(confirm("آیا برای ارسال پیامک فوری کمک (SOS) به مراقب مطمئن هستید؟")) {
+      sendSMS("🚨🚨 کمک فوری! من به کمک اضطراری نیاز دارم. لطفاً سریعاً با من تماس بگیرید.");
+      setTimeout(makeQuickCall, 1500);
     }
   }
 
